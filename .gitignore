@@ -1,0 +1,57 @@
+# Node modules for all services
+*/node_modules/
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Dependency directories
+jspm_packages/
+
+# Build output
+dist/
+build/
+coverage/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Next.js build output (if using Next.js)
+.next/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# NPM package-lock
+package-lock.json
+
+# Yarn lock file
+yarn.lock
+
+# JetBrains IDEs
+.idea/
+
+# NPM cache
+.npm/
+npm-debug.log*
+
+# TypeScript cache
+*.tsbuildinfo
