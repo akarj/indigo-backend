@@ -18,6 +18,7 @@ coverage/
 .env
 .env.local
 .env.*.local
+*/.env
 
 # Next.js build output (if using Next.js)
 .next/
