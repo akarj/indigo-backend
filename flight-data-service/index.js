@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: './.env' });
 const express = require('express');
 const { getNext10Records } = require('./utils/flightDataService');
 const cron = require('./utils/cron');
@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 // Endpoint to get next 10 flight records
-app.get('/flights', async (req, res) => {
+app.get('api/v1/flights', async (req, res) => {
    try {
       const records = await getNext10Records();
       res.json(records);

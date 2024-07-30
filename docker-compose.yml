@@ -16,8 +16,8 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - rabbitmq
-    environment:
-      - RABBITMQ_URL=amqp://rabbitmq
+    env_file:
+      - ./emergency-notification-service/.env
 
   non-emergency-notification-service:
     build:
@@ -25,8 +25,8 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - rabbitmq
-    environment:
-      - RABBITMQ_URL=amqp://rabbitmq
+    env_file:
+      - ./non-emergency-notification-service/.env
 
   notification-service:
     build:
@@ -34,19 +34,28 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - rabbitmq
-    environment:
-      - RABBITMQ_URL=amqp://rabbitmq
-      - EMAIL_USER=your-email@example.com
-      - EMAIL_PASS=your-email-password
+    env_file:
+      - ./notification-sending-service/.env
 
   user-booking-service:
     build:
       context: ./user-booking-service
       dockerfile: Dockerfile
-    environment:
-      - MONGO_URI=mongodb://mongo:27017
+    env_file:
+      - ./user-booking-service/.env
     depends_on:
       - mongo
+
+  flight-data-service:
+    build:
+      context: ./flight-data-service
+      dockerfile: Dockerfile
+    ports:
+      - '3002:3000'
+    env_file:
+      - ./flight-data-service/.env
+    volumes:
+      - ./flight-data-service:/app
 
   mongo:
     image: 'mongo:latest'

@@ -1,8 +1,8 @@
 const amqp = require('amqplib');
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '.env') });
-const logger = require('./utils/logger'); // Import the logger
-const { sendEmail } = require('./utils/emailService'); // Import the sendEmail function
+const logger = require('./utils/logger');
+const { sendEmail } = require('./utils/emailService');
 
 const RABBITMQ_URL = process.env.RABBITMQ_URL;
 
@@ -31,7 +31,6 @@ const startService = async () => {
                   const { content } = msg;
                   const notification = JSON.parse(content.toString());
 
-                  // Use the sendEmail function from emailService.js
                   await sendEmail(notification.to, notification.subject, notification.text);
 
                   channel.ack(msg);

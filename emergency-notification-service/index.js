@@ -1,5 +1,6 @@
+require('dotenv').config({ path: './.env' });
 const amqp = require('amqplib');
-const { logger } = require('./utils/logger'); // Import the logger utility
+const { logger } = require('./utils/logger');
 const RABBITMQ_URL = process.env.RABBITMQ_URL || 'amqp://localhost';
 
 const setupQueue = async (queueName) => {
@@ -24,11 +25,10 @@ const startService = async () => {
             try {
                const content = msg.content.toString();
                logger.info(`Received emergency notification: ${content}`);
-               // Process the message here
                channel.ack(msg);
             } catch (processError) {
                logger.error('Error processing message:', processError);
-               channel.nack(msg); // Optionally nack to requeue or handle differently
+               channel.nack(msg);
             }
          }
       });
