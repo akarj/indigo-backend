@@ -1,0 +1,15 @@
+{
+	"name": "user-booking-service",
+	"version": "1.0.0",
+	"description": "User and Booking Service",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"dependencies": {
+		"express": "^4.18.2",
+		"mongoose": "^7.3.1",
+		"winston": "^3.9.0",
+		"dotenv": "^16.1.4"
+	}
+}

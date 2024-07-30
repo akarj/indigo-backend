@@ -1,0 +1,14 @@
+{
+	"name": "non-emergency-notification-service",
+	"version": "1.0.0",
+	"description": "A microservice for handling non-emergency notifications with RabbitMQ",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"dependencies": {
+		"amqplib": "^0.8.0",
+		"dotenv": "^16.4.5",
+		"winston": "^3.13.1"
+	}
+}
